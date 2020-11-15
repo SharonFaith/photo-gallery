@@ -9,13 +9,13 @@ class Category(models.Model):
     name = models.CharField(max_length = 30)
 
     def __str__(self):
-        return self.category
+        return self.name
 
 class Location(models.Model):
     location_name = models.CharField(max_length = 30)
 
     def __str__(self):
-        return self.location
+        return self.location_name
 
 class Image(models.Model):
     #image = models.ImageField(upload_to = 'articles/')
