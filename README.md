@@ -1,8 +1,8 @@
-#   PICTURE APP (STILL IN PROGRESS, NOT YET COMPLETED)
+#   PICTURE APP
 #### A web application
 #### By **Sharon Faith**
 ## Description
-Picture app is a web application that allows users to view pictures of different categories. They can search for specific categories and filter results according to the location the picture was taken.
+Picture app is a web application that allows users to view pictures of different categories. They can search for specific categories and filter results according to the location the picture was taken. On clicking on a picture, a modal displays an enlarged version of the image as well as more details about the image.
 
 
 
