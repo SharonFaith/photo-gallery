@@ -11,6 +11,19 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    def save_category(self):
+        self.save()
+
+    def delete_category(self):
+        self.delete()
+
+    @classmethod
+    def update_category(cls, id, update):
+        category_to_update = cls.objects.filter(id = id)
+        category_to_update.update(name = update)
+        
+
+
 class Location(models.Model):
     location_name = models.CharField(max_length = 30)
 
