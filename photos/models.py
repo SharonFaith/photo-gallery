@@ -51,3 +51,14 @@ class Image(models.Model):
 
     def __str__(self):
         return self.image_name
+
+     def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()
+
+    @classmethod
+    def update_image_name(cls, id, update):
+        image_to_update = cls.objects.filter(id = id)
+        image_to_update.update(image_name = update)
