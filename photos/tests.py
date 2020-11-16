@@ -55,3 +55,13 @@ class LocationTestClass(TestCase):
         self.place.save_location()
         locations = Location.objects.all()
         self.assertTrue(len(locations) > 0)
+
+    def test_delete_category(self):
+        self.place.save_location()
+        place2= Location(location_name = 'kili')
+        place2.save_location()
+        
+        place2.delete_location()
+        places = Location.objects.all()
+        print(places)
+        self.assertTrue(len(places) == 1)
