@@ -56,7 +56,7 @@ class LocationTestClass(TestCase):
         locations = Location.objects.all()
         self.assertTrue(len(locations) > 0)
 
-    def test_delete_category(self):
+    def test_delete_location(self):
         self.place.save_location()
         place2= Location(location_name = 'kili')
         place2.save_location()
@@ -65,3 +65,16 @@ class LocationTestClass(TestCase):
         places = Location.objects.all()
         print(places)
         self.assertTrue(len(places) == 1)
+
+    def test_update_location(self):
+         
+        self.place.save_location()
+        place2= Location(location_name = 'kili')
+        place2.save_location()
+        print(place2.id)
+        Location.update_location(5, 'westlands')
+
+       
+        
+        
+        self.assertEqual(Location.objects.filter(id = 5).first().location_name, 'westlands')

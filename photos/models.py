@@ -36,6 +36,11 @@ class Location(models.Model):
     def delete_location(self):
         self.delete()
 
+    @classmethod
+    def update_location(cls, id, update):
+        location_to_update = cls.objects.filter(id = id)
+        location_to_update.update(location_name = update)
+
 class Image(models.Model):
     #image = models.ImageField(upload_to = 'articles/')
     image_name = models.CharField(max_length=60)
