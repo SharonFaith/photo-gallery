@@ -8,9 +8,9 @@
     
   <div class="row">
     {% if images%}
-      <h2 class="text-center">Found {{ images|length }} pictures of {{message}} category</h2>
+      <h2 class="text-center">Found {{ images|length }} pictures taken in  {{place}} location</h2>
     {% else %}
-      <h2> Found 0 images for the category {{message}}</h2>
+      <h2> Found 0 images for the location {{place}}</h2>
     {% endif %}
 
   </div>

@@ -98,12 +98,12 @@ class Image(models.Model):
     @classmethod
     def filter_by_location(cls, location):
         place = Location.objects.filter(location_name = location).first()
-
+        place_name = place.location_name
         
         pictures = cls.objects.all()
         picture_array = []
         for picture in pictures:
-            if picture.location == place.id:
+            if picture.location.location_name == place_name:
                 picture_array.insert(0, picture)
 
         return picture_array

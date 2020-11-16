@@ -26,7 +26,17 @@
       </form>
       <hr>
       <h3 class="text-center">Click on an image to find out more details about it!</h3>
-      </div>
+      <hr>
+      <h4 class="text-center">To filter by location taken click on one of the following:</h4>
+      <br>
+      <ul class="text-center">
+        <a href="{% url 'filter' 'CBD' %}"><li>CBD</li></a>
+        <a href="{% url 'filter' 'Westlands' %}"><li>Westlands</li></a>
+        <a href="{% url 'filter' 'Kilimani' %}"><li>Kilimani</li></a>
+        <a href="{% url 'filter' 'Kileleshwa' %}"><li>Kileleshwa</li></a>
+      </ul>
+
+    </div>
      
   </div>
 
@@ -54,7 +64,7 @@
                                        </button>
                               </div>
                               <div class="modal-body">
-                                <img src="{{photo.image.url}}" class="img-responsive modal-content" alt="Image" style="padding: 5px; width: 100%; height: 100%;">
+                                <img src="{{photo.image.url}}" class="img-responsive modal-content" alt="Image" style="padding: 5px; width: 100%; height: 60%;">
                                 <br>
                                 <br>
                                 <p><strong>Description: </strong> {{photo.image_description}}</p>
