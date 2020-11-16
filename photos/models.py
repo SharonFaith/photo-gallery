@@ -86,3 +86,9 @@ class Image(models.Model):
                 picture_array.insert(0, picture)
 
         return picture_array
+
+    @classmethod
+    def get_all_images(cls):
+        all_pics = Image.objects.all()
+
+        return all_pics
