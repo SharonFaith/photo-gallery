@@ -13,6 +13,7 @@ def welcome(request):
 
 def index(request):
 
+    photos = Image.get_all_images()
     
 
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'photos': photos})
