@@ -40,3 +40,18 @@ class CategoryTestClass(TestCase):
         
         
         self.assertEqual(Category.objects.filter(id = 5).first().name, 'crops')
+
+class LocationTestClass(TestCase):
+
+    #set up method
+    def setUp(self):
+       self.place = Location(location_name = 'kile')
+
+    def test_instance(self):
+
+        self.assertTrue(isinstance(self.place, Location))
+
+    def test_save_location(self):
+        self.place.save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations) > 0)
