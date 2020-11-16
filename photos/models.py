@@ -42,7 +42,7 @@ class Location(models.Model):
         location_to_update.update(location_name = update)
 
 class Image(models.Model):
-    #image = models.ImageField(upload_to = 'articles/')
+    image = models.ImageField(upload_to = 'uploads/', default = 'pics')
     image_name = models.CharField(max_length=60)
     image_description = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
