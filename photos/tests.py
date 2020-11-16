@@ -9,6 +9,6 @@ class CategoryTestClass(TestCase):
     def setUp(self):
        self.new = Category(name = 'travel')
 
-    print(self.new)
-    
-    
+    def test_instance(self):
+
+        self.assertTrue(isinstance(self.new, Category))
