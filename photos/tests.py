@@ -73,8 +73,59 @@ class LocationTestClass(TestCase):
         place2.save_location()
         print(place2.id)
         Location.update_location(5, 'westlands')
-
-       
         
         
         self.assertEqual(Location.objects.filter(id = 5).first().location_name, 'westlands')
+
+class ImageTestClass(TestCase):
+
+    def setUp(self):
+        # Creating a category and saving it
+        self.categ2= Category(name = 'food')
+        self.categ2.save_category()
+
+       
+        # Creating a location and saving it
+        self.place2= Location(location_name = 'kili')
+        self.place2.save_location()
+
+       
+
+        #creating instance of image
+        self.pic = Image(image_name = 'brown', image_description= 'A brown picture', category = self.categ2, location = self.place2 )
+       
+
+
+    def tearDown(self):
+        Category.objects.all().delete()
+        Location.objects.all().delete()
+        Image.objects.all().delete()
+
+    def test_instance(self):
+
+        self.assertTrue(isinstance(self.pic, Image))
+
+    def test_save_image(self):
+        self.pic.save_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images) > 0)
+
+    def test_delete_image(self):
+        self.pic.save_image()
+        image2 = Image(image_name = 'red', image_description= 'A red picture', category = self.categ2, location = self.place2 ) 
+        image2.save_image()
+        
+        image2.delete_image()
+        images = Image.objects.all()
+        print(images)
+        self.assertTrue(len(images) == 1)
+
+    def test_update_image(self):
+         
+         self.pic.save_image()
+        image2 = Image(image_name = 'red', image_description= 'A red picture', category = self.categ2, location = self.place2 ) 
+        image2.save_image()
+        print(image2.id)
+        Image.update_image_name(5, 'green')
+
+         self.assertEqual(Image.objects.filter(id = 5).first().location_name, 'green')
