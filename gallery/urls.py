@@ -21,5 +21,6 @@ from django.conf.urls import include
 urlpatterns = [
     path('', include('photos.urls')),
     path('landing-page/', include('photos.urls')),
+    path('search/', include('photos.urls')),
     path('admin/', admin.site.urls),
 ]

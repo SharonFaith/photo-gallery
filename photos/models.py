@@ -71,7 +71,28 @@ class Image(models.Model):
 
     @classmethod
     def search_image(cls, category):
-        pictures = cls.objects.filter(category__icontains = category)
+       # categ = Category.objects.filter(category = category)
+
+       # pics = cls.objects.all()
+        #pictures = []
+
+        ##for picture in pics:
+        #    if picture.category== categ.id:
+         #       pictures.insert(0, picture)
+
+        categ = Category.objects.filter(name__icontains=category).first()
+        categ_name = categ.name
+        pics = Image.get_all_images()
+        print(categ_name)
+        pictures = []
+        print(pics)
+        
+        for picture in pics:
+            if picture.category.name == categ_name:
+                
+                pictures.insert(0, picture)
+
+        print(pictures)
         return pictures
     
     @classmethod
@@ -80,7 +101,7 @@ class Image(models.Model):
 
         
         pictures = cls.objects.all()
-        picture_array = empty
+        picture_array = []
         for picture in pictures:
             if picture.location == place.id:
                 picture_array.insert(0, picture)
