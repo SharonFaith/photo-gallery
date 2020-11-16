@@ -23,17 +23,17 @@ class CategoryTestClass(TestCase):
         categ2= Category(name = 'food')
         categ2.save_category()
         categs  = Category.objects.all()
-        print(categs)
+       
         categ2.delete_category()
         categs  = Category.objects.all()
-        print(categs)
+        
         self.assertTrue(len(categs) == 1)
 
     def test_update_category(self):
         self.new.save_category()
         categ2= Category(name = 'food')
         categ2.save_category()
-        print(categ2.id)
+        
         Category.update_category(5, 'crops')
 
        
@@ -63,7 +63,7 @@ class LocationTestClass(TestCase):
         
         place2.delete_location()
         places = Location.objects.all()
-        print(places)
+       
         self.assertTrue(len(places) == 1)
 
     def test_update_location(self):
@@ -71,7 +71,7 @@ class LocationTestClass(TestCase):
         self.place.save_location()
         place2= Location(location_name = 'kili')
         place2.save_location()
-        print(place2.id)
+#        print(place2.id)
         Location.update_location(9, 'westlands')
         
         
@@ -96,10 +96,7 @@ class ImageTestClass(TestCase):
        
 
 
-    def tearDown(self):
-        Category.objects.all().delete()
-        Location.objects.all().delete()
-        Image.objects.all().delete()
+    
 
     def test_instance(self):
 
@@ -117,7 +114,7 @@ class ImageTestClass(TestCase):
         
         image2.delete_image()
         images = Image.objects.all()
-        print(images)
+#        print(images)
         self.assertTrue(len(images) == 1)
 
     def test_update_image(self):
@@ -126,10 +123,21 @@ class ImageTestClass(TestCase):
         print(self.pic.id)
         image2 = Image(image_name = 'red', image_description= 'A red picture', category = self.categ2, location = self.place2 ) 
         image2.save_image()
+#        print(image2.id)
+
+#        print(Image.objects.all())
+
+        Image.update_image_name(7, 'green')
+
+        self.assertEqual(Image.objects.filter(id = 7).first().image_name, 'green')
+
+    def test_get_image_by_id(self):
+
+        self.pic.save_image()
+        
+        image2 = Image(image_name = 'red', image_description= 'A red picture', category = self.categ2, location = self.place2 ) 
+        image2.save_image()
         print(image2.id)
+        Image.get_image_by_id(4)
 
-        print(Image.objects.all())
-
-        Image.update_image_name(5, 'green')
-
-        self.assertEqual(Image.objects.filter(id = 5).first().image_name, 'green')
+        self.assertEqual(Image.objects.filter(id = 4).first().image_name, 'red')
