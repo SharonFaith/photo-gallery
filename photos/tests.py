@@ -71,11 +71,11 @@ class LocationTestClass(TestCase):
         self.place.save_location()
         place2= Location(location_name = 'kili')
         place2.save_location()
-#        print(place2.id)
-        Location.update_location(9, 'westlands')
+        print(place2.id)
+        Location.update_location(11, 'westlands')
         
         
-        self.assertEqual(Location.objects.filter(id = 9).first().location_name, 'westlands')
+        self.assertEqual(Location.objects.filter(id = 11).first().location_name, 'westlands')
 
 class ImageTestClass(TestCase):
 
@@ -94,6 +94,10 @@ class ImageTestClass(TestCase):
         #creating instance of image
         self.pic = Image(image_name = 'brown', image_description= 'A brown picture', category = self.categ2, location = self.place2 )
        
+    def tearDown(self):
+        Category.objects.all().delete()
+        Location.objects.all().delete()
+        Image.objects.all().delete()
 
 
     
@@ -120,16 +124,16 @@ class ImageTestClass(TestCase):
     def test_update_image(self):
          
         self.pic.save_image()
-        print(self.pic.id)
+#        print(self.pic.id)
         image2 = Image(image_name = 'red', image_description= 'A red picture', category = self.categ2, location = self.place2 ) 
         image2.save_image()
-#        print(image2.id)
+        print(image2.id)
 
 #        print(Image.objects.all())
 
-        Image.update_image_name(7, 'green')
+        Image.update_image_name(10, 'green')
 
-        self.assertEqual(Image.objects.filter(id = 7).first().image_name, 'green')
+        self.assertEqual(Image.objects.filter(id = 10).first().image_name, 'green')
 
     def test_get_image_by_id(self):
 
@@ -141,3 +145,4 @@ class ImageTestClass(TestCase):
         Image.get_image_by_id(4)
 
         self.assertEqual(Image.objects.filter(id = 4).first().image_name, 'red')
+

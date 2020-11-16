@@ -68,3 +68,21 @@ class Image(models.Model):
         image = cls.objects.filter(id = id)
         
         return image
+
+    @classmethod
+    def search_image(cls, category):
+        pictures = cls.objects.filter(category__icontains = category)
+        return pictures
+    
+    @classmethod
+    def filter_by_location(cls, location):
+        place = Location.objects.filter(location_name = location).first()
+
+        
+        pictures = cls.objects.all()
+        picture_array = empty
+        for picture in pictures:
+            if picture.location == place.id:
+                picture_array.insert(0, picture)
+
+        return picture_array
