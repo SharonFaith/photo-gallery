@@ -72,10 +72,10 @@ class LocationTestClass(TestCase):
         place2= Location(location_name = 'kili')
         place2.save_location()
         print(place2.id)
-        Location.update_location(11, 'westlands')
+        Location.update_location('kili', 'westlands')
         
         
-        self.assertEqual(Location.objects.filter(id = 11).first().location_name, 'westlands')
+        self.assertEqual(Location.objects.filter(id = 10).first().location_name, 'westlands')
 
 class ImageTestClass(TestCase):
 
@@ -127,13 +127,13 @@ class ImageTestClass(TestCase):
 #        print(self.pic.id)
         image2 = Image(image_name = 'red', image_description= 'A red picture', category = self.categ2, location = self.place2 ) 
         image2.save_image()
-        print(image2.id)
+#        print(image2.id)
 
 #        print(Image.objects.all())
 
-        Image.update_image_name(10, 'green')
+        Image.update_image_name('red', 'green')
 
-        self.assertEqual(Image.objects.filter(id = 10).first().image_name, 'green')
+        self.assertEqual(Image.objects.filter(image_description='A red picture').first().image_name, 'green')
 
     def test_get_image_by_id(self):
 
@@ -141,7 +141,7 @@ class ImageTestClass(TestCase):
         
         image2 = Image(image_name = 'red', image_description= 'A red picture', category = self.categ2, location = self.place2 ) 
         image2.save_image()
-        print(image2.id)
+#        print(image2.id)
         Image.get_image_by_id(4)
 
         self.assertEqual(Image.objects.filter(id = 4).first().image_name, 'red')
