@@ -7,7 +7,7 @@ Picture app is a web application that allows users to view pictures of different
 
 
 ## Running the app
-*  Access the app at the live site: 
+*  Access the app at the live site: https://app-photo-gallery.herokuapp.com
 
 ## Setup/Installation Requirements
 * Use a desktop or laptop, phone or tablet.
